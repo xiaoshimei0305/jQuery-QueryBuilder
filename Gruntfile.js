@@ -55,7 +55,8 @@ module.exports = function(grunt) {
                 options: {
                     host: '0.0.0.0',
                     port: 9000,
-                    livereload: true
+                    livereload: true,
+                    keepalive:true
                 }
             }
         },
@@ -373,7 +374,15 @@ module.exports = function(grunt) {
             all: {
                 src: '.coverage-results/all.lcov'
             }
-        }
+        },
+        // bower-task
+         bower: {
+             install: {
+                 options: {
+
+                 }
+             }
+         }
     });
 
 

@@ -1,11 +1,7 @@
 {
   "name": "jQuery-QueryBuilder",
   "authors": [
-    {
-      "name": "Damien \"Mistic\" Sorel",
-      "email": "contact@git.strangeplanet.fr",
-      "homepage": "http://www.strangeplanet.fr"
-    }
+    "[object Object]"
   ],
   "description": "jQuery plugin for user friendly query/filter creator",
   "main": [
@@ -51,6 +47,7 @@
     "composer.json",
     "package.json",
     "Gruntfile.js",
-    "CONTRIBUTING.md"
+    "CONTRIBUTING.md",
+    "test"
   ]
 }
