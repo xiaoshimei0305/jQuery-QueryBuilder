@@ -1,0 +1,16 @@
+$es-select-backcolor:white;
+$es-select-color:black;
+@if $theme-name == 'dark' {
+  $es-select-backcolor:black;
+  $es-select-color:white;
+}
+.query-builder {
+  .es-type-condition {
+    display: inline;
+    margin-left: 5px;
+    select {
+          background-color: $es-select-backcolor;
+          color:$es-select-color;
+    }
+  }
+}

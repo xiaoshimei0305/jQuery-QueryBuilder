@@ -137,6 +137,16 @@
   color: #F99 !important;
 }
 
+.query-builder .es-type-condition {
+  display: inline;
+  margin-left: 5px;
+}
+
+.query-builder .es-type-condition select {
+  background-color: white;
+  color: black;
+}
+
 .query-builder p.filter-description {
   margin: 5px 0 0 0;
   background: #D9EDF7;

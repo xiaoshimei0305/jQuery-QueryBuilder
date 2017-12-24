@@ -141,6 +141,7 @@
 <script src="../src/plugins/bt-tooltip-errors/plugin.js"></script>
 <script src="../src/plugins/change-filters/plugin.js"></script>
 <script src="../src/plugins/filter-description/plugin.js"></script>
+<script src="../src/plugins/es-idragon/plugin.js"></script>
 <script src="../src/plugins/invert/plugin.js"></script>
 <script src="../src/plugins/mongodb-support/plugin.js"></script>
 <script src="../src/plugins/not-group/plugin.js"></script>
@@ -170,13 +171,14 @@
 
     plugins: {
       'bt-tooltip-errors': { delay: 100 },
-      'sortable': null,
-      'filter-description': { mode: 'bootbox' },
+      //'sortable': null,
+      //'filter-description': { mode: 'bootbox' },
       'bt-selectpicker': null,
-      'unique-filter': null,
+      //'unique-filter': null,
       'bt-checkbox': { color: 'primary' },
-      'invert': null,
-      'not-group': null
+      'es-idragon':{esTypelist:[{id:"page",name:"首页"},{id:'diagall',name:"主要诊断"}]},
+      //'invert': null,
+      //'not-group': null
     },
 
     // standard operators in custom optgroups
