@@ -25,7 +25,6 @@ QueryBuilder.define('es-idragon', function(options) {
             var esselecthtml=self.getEsTypeSelectHtml(options.esTypelist);
             $h.find(Selectors.condition_container).after(self.getEsTypeSelectHtml(options.esTypelist));
         }
-      //  $h.find(Selectors.condition_container).after('<button type="button" class="btn btn-xs btn-default" data-invert="group"><i class="' + options.icon + '"></i> ' + self.translate('invert') + '</button>');
         h.value = $h.prop('outerHTML');
     });
 }, {
