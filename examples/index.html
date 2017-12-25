@@ -19,6 +19,15 @@
     .flag {
       display: inline-block;
     }
+	.query-builder .rule-mdc-select-container {
+		  display:inline;
+	}
+	.query-builder .group-mdc-select-container {
+		  display:inline;
+	}
+	.query-builder .rule-mdc-select-container select{
+		  margin-left:2px;
+	}
   </style>
 </head>
 
@@ -103,7 +112,8 @@
       <button class="btn btn-primary parse-json">JSON</button>
       <button class="btn btn-primary parse-sql" data-stmt="false">SQL</button>
       <button class="btn btn-primary parse-sql" data-stmt="question_mark">SQL statement</button>
-      <button class="btn btn-primary parse-mongo">MongoDB</button>
+     <!-- <button class="btn btn-primary parse-mongo">MongoDB</button> -->
+	  <button class="btn btn-success parse-mdces">mdces</button>
     </div>
 
     <div id="result" class="hide">
@@ -141,15 +151,13 @@
 <script src="../src/plugins/bt-tooltip-errors/plugin.js"></script>
 <script src="../src/plugins/change-filters/plugin.js"></script>
 <script src="../src/plugins/filter-description/plugin.js"></script>
-<script src="../src/plugins/es-idragon/plugin.js"></script>
 <script src="../src/plugins/invert/plugin.js"></script>
+<script src="../src/plugins/mdc-es-type/plugin.js"></script>
 <script src="../src/plugins/mongodb-support/plugin.js"></script>
 <script src="../src/plugins/not-group/plugin.js"></script>
 <script src="../src/plugins/sortable/plugin.js"></script>
 <script src="../src/plugins/sql-support/plugin.js"></script>
 <script src="../src/plugins/unique-filter/plugin.js"></script>
-
-<!-- <script src="../dist/js/query-builder.min.js"></script> -->
 <script src="../dist/i18n/query-builder.en.js"></script>
 <!-- endinjector -->
 
@@ -173,14 +181,14 @@
 
     plugins: {
       'bt-tooltip-errors': { delay: 100 },
-      //'sortable': null,
-      //'filter-description': { mode: 'bootbox' },
-      'bt-selectpicker': null,
-      //'unique-filter': null,
+     // 'sortable': null,
+      'filter-description': { mode: 'bootbox' },
+     // 'bt-selectpicker': null,
+      'unique-filter': null,
       'bt-checkbox': { color: 'primary' },
-      'es-idragon':{esTypelist:[{id:"page",name:"首页"},{id:'diagall',name:"主要诊断"}]},
-      //'invert': null,
-      //'not-group': null
+     // 'invert': null,
+      'mdc-es': {types:[{id:'page',name:'首页'},{id:'diagall',name:'主要诊断'}]},
+    // 'not-group': null
     },
 
     // standard operators in custom optgroups
@@ -208,6 +216,17 @@
     ],
 
     filters: [
+	/*
+       * string with separator
+       */
+      {
+        id: 'cherry',
+        field: 'cherryName',
+		mdcselect:{id:"firstselect",select:[{id:'111',name:'测试111',select:[{id:'fuck',name:'fuck',select:[{id:'112',name:'中国'}]},{id:'fuck2',name:'fuck2'}]},
+		{id:'222',name:'测试2222',select:[{id:'fuck',name:'fuck'}]},
+		{id:'333',name:'测试333'}]},
+		mdctype:['page','diagall']
+      },
       /*
        * string with separator
        */
@@ -226,7 +245,8 @@
         validation: {
           allow_empty_value: true
         },
-        unique: true
+        unique: true,
+		mdctype:['page']
       },
       /*
        * integer with separator for 'in' and 'not_in'
@@ -242,7 +262,8 @@
           if (rule.operator && ['in', 'not_in'].indexOf(rule.operator.type) !== -1) {
             return 'Use a pipe (|) to separate multiple values with "in" and "not in" operators';
           }
-        }
+        },
+		mdctype:['diagall']
       },
       /*
        * textarea
@@ -610,6 +631,11 @@
     ));
   });
 
+  $('.parse-mdces').on('click',function(){
+	var result=$('#builder').queryBuilder('mdcGetEsQuery');
+	$('#result').removeClass('hide').find('pre').html(JSON.stringify(result,undefined,2));
+  });
+
   $('.parse-sql').on('click', function() {
     var res = $('#builder').queryBuilder('getSQL', $(this).data('stmt'), false);
     $('#result').removeClass('hide')
@@ -652,7 +678,7 @@
 </script>
 
 <script>
-  document.write('<script src="//' + location.host.split(':')[0] + ':35729/livereload.js" async defer><' + '/script>');
+ // document.write('<script src="//' + location.host.split(':')[0] + ':35729/livereload.js" async defer><' + '/script>');
 </script>
 </body>
 </html>

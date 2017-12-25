@@ -161,6 +161,10 @@
   margin-left: 5px;
 }
 
+.query-builder .rules-group-header [data-invert] {
+  margin-left: 5px;
+}
+
 .query-builder .drag-handle {
   cursor: move;
   vertical-align: middle;
